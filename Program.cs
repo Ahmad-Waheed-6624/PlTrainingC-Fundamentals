@@ -1,30 +1,97 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// // Contact Management with File Handling
+
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using MyNewApp.Models;
-// create a simple object of a class with default constructor
-Person p1 = new()
-{
-    ID = 1,
-    Address = "This is my address",
-    Age = 18,
-    Name = "Ahmad",
-    Mail = "This is my mail"
-};
-// getting the static member function of static class
-int age = NewPerson.GetAge();
 
-// change this to handle null exception error
-System.Console.WriteLine("Enter Your Name");
-string? name = Console.ReadLine();
-System.Console.WriteLine("Enter Your Age");
-string? ageInput = Console.ReadLine();
-System.Console.WriteLine("Enter Your Address");
-string? address = Console.ReadLine();
-int age2 = int.Parse(ageInput);
-// int[] arr1 = [1, 2, 3, 4, 5, 6];
+// System.Console.WriteLine("-------- Welcome to Phone Book app --------");
+// System.Console.WriteLine("Press 1 to Add a New Contact");
+// System.Console.WriteLine("Press 2 to Update a Contact");
+// System.Console.WriteLine("Press 3 to Delete a Contact");
+// System.Console.WriteLine("Press 4 to Display all Contact");
+// System.Console.WriteLine("Press 5 to Search a Contact");
+// System.Console.WriteLine("Press 0 to Exit");
 
-// for (int i = 0; i <= arr1.Length - 1; i++)
+
+// string? menuOptionString = Console.ReadLine();
+// while (String.IsNullOrWhiteSpace(menuOptionString) || Convert.ToInt16(menuOptionString) > 5)
 // {
-//     System.Console.WriteLine($"this is my array value ${arr1[i]}");
+//     System.Console.WriteLine("Invalid Or Null Input Please Try Again and Enter Number Between 0-5");
+//     menuOptionString = Console.ReadLine();
+
 // }
 
-System.Console.WriteLine($"My name is ${name} and i am {age2} year old and my address is {address}");
+
+
+// int menuOption = Convert.ToInt16(menuOptionString);
+
+// switch (menuOption)
+// {
+//     case 1:
+//         System.Console.WriteLine("add");
+//         break;
+//     case 2:
+//         System.Console.WriteLine("update");
+//         break;
+//     case 3:
+//         System.Console.WriteLine("delete");
+//         break;
+//     case 4:
+//         AllContact()
+//         break;
+//     case 5:
+//         System.Console.WriteLine("search");
+//         break;
+//     case 0:
+//         System.Console.WriteLine("exit");
+//         break;
+//     default:
+//         System.Console.WriteLine("exit");
+//         break;
+// }
+string path = @"D:\temp\phoneBook.json";
+List<Contact> newContact =
+[
+    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
+    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
+    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
+];
+string jsonString = JsonSerializer.Serialize<List<Contact>>(newContact);
+File.WriteAllText(path, jsonString);
+
+string AddContact()
+{
+    string? name;
+    string? phone;
+    System.Console.WriteLine("Enter Name");
+    name = Console.ReadLine();
+    while (String.IsNullOrWhiteSpace(name))
+    {
+        System.Console.WriteLine("Name Cannot be null");
+        name = Console.ReadLine();
+    }
+    System.Console.WriteLine("Enter Phone No");
+    phone = Console.ReadLine();
+    while (String.IsNullOrWhiteSpace(phone))
+    {
+        System.Console.WriteLine("Phone no Cannot be null");
+        phone = Console.ReadLine();
+    }
+    Contact newContact = new()
+    {
+
+    };
+
+    return "Contact Added Successfully";
+}
+
+
+
+List<Contact> AllContact()
+{
+    string json = File.ReadAllText(path);
+    List<Contact>? data = JsonSerializer.Deserialize<List<Contact>>(json);
+    return data!;
+
+}
