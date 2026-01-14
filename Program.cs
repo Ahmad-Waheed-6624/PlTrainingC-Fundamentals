@@ -1,97 +1,207 @@
-﻿// // Contact Management with File Handling
+﻿// // // // Contact Management with File Handling
 
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using MyNewApp.Models;
+// // using MyNewApp.Models;
+// // using MyNewApp.Utils;
+// // using System.Text.Json;
 
-// System.Console.WriteLine("-------- Welcome to Phone Book app --------");
-// System.Console.WriteLine("Press 1 to Add a New Contact");
-// System.Console.WriteLine("Press 2 to Update a Contact");
-// System.Console.WriteLine("Press 3 to Delete a Contact");
-// System.Console.WriteLine("Press 4 to Display all Contact");
-// System.Console.WriteLine("Press 5 to Search a Contact");
-// System.Console.WriteLine("Press 0 to Exit");
+using Microsoft.VisualBasic;
+
+IProgram.Hello();
 
 
-// string? menuOptionString = Console.ReadLine();
-// while (String.IsNullOrWhiteSpace(menuOptionString) || Convert.ToInt16(menuOptionString) > 5)
+
+
+
+
+// // MessageUtils.ShowMenu();
+
+
+// // string path = @"D:\temp\phoneBook.json";
+// // List<Contact> AllContact()
+// // {
+// //     string json = File.ReadAllText(path);
+// //     List<Contact>? data = JsonSerializer.Deserialize<List<Contact>>(json);
+// //     return data!;
+
+// // }
+
+// // void AddContact()
+// // {
+// //     List<Contact> all = AllContact();
+// //     string? name;
+// //     string? phone;
+// //     Console.WriteLine("Enter Name");
+// //     name = Console.ReadLine();
+// //     while (String.IsNullOrWhiteSpace(name))
+// //     {
+// //         Console.WriteLine("Name Cannot be null");
+// //         name = Console.ReadLine();
+// //     }
+// //     Console.WriteLine("Enter Phone No");
+// //     phone = Console.ReadLine();
+// //     while (String.IsNullOrWhiteSpace(phone))
+// //     {
+// //         Console.WriteLine("Phone no Cannot be null");
+// //         phone = Console.ReadLine();
+// //     }
+// //     Contact newContact = new()
+// //     {
+// //         ID = Guid.NewGuid(),
+// //         Name = name,
+// //         PhoneNo = phone
+
+// //     };
+// //     var contact = all.FirstOrDefault(contact => contact.PhoneNo == phone);
+// //     if (contact != null)
+// //     {
+// //         Console.WriteLine("This Phone No is already exist");
+// //         return;
+// //     }
+// //     all.Add(newContact);
+// //     string jsonString = JsonSerializer.Serialize<List<Contact>>(all);
+// //     File.WriteAllText(path, jsonString);
+// //     Console.WriteLine("Contact Added Successfully");
+// // }
+
+
+// // List<int> arr = [21, 32, 34, 42, 23, 45, 65, 55];
+
+// // IEnumerable<int> result =
+// // from val in arr
+// // where val > 40
+// // select val;
+
+// var myDict = new Dictionary<string, int>
 // {
-//     System.Console.WriteLine("Invalid Or Null Input Please Try Again and Enter Number Between 0-5");
-//     menuOptionString = Console.ReadLine();
+//  { "name",11},
+//  { "age",12},
+//  { "address",10},
+// };
 
+// var result = from dict in myDict
+//              where dict.Key == "age"
+//              select dict.Value;
+
+// var result2 = myDict.Where(dic => dic.Value > 10).ToList();
+// // myDict.Add("name", "ali");
+// System.Console.WriteLine(result2[1]);
+// // foreach (var item in result2)
+// // {
+// //     System.Console.WriteLine(item);
+// // }
+
+// string prenthesis = "{<[]>>}";
+
+// bool isValidPrenthesis(string val)
+// {
+//     var mystack = new Stack<char>();
+//     bool isValid = false;
+//     for (int i = 0; i < val.Length; i++)
+//     {
+//         if (mystack.Count > 0 && mystack.Peek() == val[i])
+//         {
+//             mystack.Pop();
+//             continue;
+//         }
+//         mystack.Push(val[i]);
+
+//     }
+//     if (mystack.Count == 0)
+//     {
+//         isValid = true;
+//     }
+//     return isValid;
 // }
 
+// var mystack = new Stack<int>();
 
+// mystack.Push(89);
+// mystack.Push(78);
+// mystack.Push(90);
 
-// int menuOption = Convert.ToInt16(menuOptionString);
+// System.Console.WriteLine(mystack.Peek());
 
-// switch (menuOption)
-// {
-//     case 1:
-//         System.Console.WriteLine("add");
-//         break;
-//     case 2:
-//         System.Console.WriteLine("update");
-//         break;
-//     case 3:
-//         System.Console.WriteLine("delete");
-//         break;
-//     case 4:
-//         AllContact()
-//         break;
-//     case 5:
-//         System.Console.WriteLine("search");
-//         break;
-//     case 0:
-//         System.Console.WriteLine("exit");
-//         break;
-//     default:
-//         System.Console.WriteLine("exit");
-//         break;
-// }
-string path = @"D:\temp\phoneBook.json";
-List<Contact> newContact =
-[
-    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
-    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
-    new Contact{  ID = Guid.NewGuid(), Name = "Ali",PhoneNo = "03225697828"},
-];
-string jsonString = JsonSerializer.Serialize<List<Contact>>(newContact);
-File.WriteAllText(path, jsonString);
+// bool isValid = isValidPrenthesis(prenthesis);
+// string message = isValid ? "this is a valid sequance" : "this is invalid sequance";
+// System.Console.WriteLine(message);
 
-string AddContact()
+// namespace MyNewApp;
+
+void typeChecker<T>(T value)
 {
-    string? name;
-    string? phone;
-    System.Console.WriteLine("Enter Name");
-    name = Console.ReadLine();
-    while (String.IsNullOrWhiteSpace(name))
-    {
-        System.Console.WriteLine("Name Cannot be null");
-        name = Console.ReadLine();
-    }
-    System.Console.WriteLine("Enter Phone No");
-    phone = Console.ReadLine();
-    while (String.IsNullOrWhiteSpace(phone))
-    {
-        System.Console.WriteLine("Phone no Cannot be null");
-        phone = Console.ReadLine();
-    }
-    Contact newContact = new()
-    {
+    System.Console.WriteLine(value);
+}
 
-    };
-
-    return "Contact Added Successfully";
+typeChecker("hello");
+BetterList<int> better = new();
+better.AddtoList(6);
+better.AddtoList(7);
+public class BetterList<T>
+{
+    public List<T> values = new();
+    public void AddtoList(T val)
+    {
+        values.Add(val);
+        System.Console.WriteLine($"{val} is added to the list");
+    }
 }
 
 
 
-List<Contact> AllContact()
+public abstract class Person(string name, string lastname, DateOnly birthday)
 {
-    string json = File.ReadAllText(path);
-    List<Contact>? data = JsonSerializer.Deserialize<List<Contact>>(json);
-    return data!;
+    public string Name { get; } = name;
+    public string LastName { get; } = lastname;
+    public DateOnly BirthDay { get; } = birthday;
+    public abstract void ArrangeMeeting();
+    public static void Hello()
+    {
+        System.Console.WriteLine("this is hello");
+    }
+};
+
+// this is using the primary constructor
+public class Manager(string name, string lastname, DateOnly birthday) : Person(name, lastname, birthday)
+{
+    public override void ArrangeMeeting()
+    {
+        System.Console.WriteLine("i arrange a meeting");
+    }
 
 }
+
+// this is an other way of use constructor of the base class
+public class Intern : Person
+{
+    public Intern(string name, string lastname, DateOnly birthday) : base(name, lastname, birthday)
+    {
+
+    }
+    public override void ArrangeMeeting()
+    {
+        System.Console.WriteLine("i can also arrange a meeting");
+    }
+}
+
+
+public interface IProgram
+{
+    public static void Hello()
+    {
+        System.Console.WriteLine("hello");
+    }
+    public void PrintName()
+    {
+        System.Console.WriteLine("Hello");
+    }
+}
+public class MyProgram : IProgram
+{
+
+}
+
+
+
+
+
